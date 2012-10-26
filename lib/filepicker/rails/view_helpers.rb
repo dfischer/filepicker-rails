@@ -66,13 +66,8 @@ module Filepicker
       #                 and horizontal with a comma. The default behavior
       #                 is bottom,right
       def filepicker_image_url(url, options = {})
-        if options[:format].present?
-          extension = ".#{options[:format]}"
-        else
-          extension = ""
-        end
-        query_params = options.slice(:width, :height, :fit, :align, :crop, :format, :quality, :watermark, :watersize, :waterposition).to_query
-        [url, "/convert?#{extension}", query_params].join
+        query_params = options.slice(:width, :height, :fit, :align, :crop, :format, :quality, :watermark, :watersize, :waterposition, :dl).to_query
+        [url, "/convert?", query_params].join
       end
     end
   end
